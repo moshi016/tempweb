@@ -21,7 +21,7 @@ $contact->subject = isset($_POST['subject']) ? $_POST['subject'] : '';
 $contact->smtp = array(
     'host' => 'smtp.gmail.com',
     'username' => 'farizmoshi@gmail.com',
-    'password' => 'Meerza9966Rida#',
+    'password' => 'XXXXX',
     'port' => '587',
     'encryption' => 'tls' // Use 'tls' for TLS or 'ssl' for SSL
 );
