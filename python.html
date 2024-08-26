@@ -7,5 +7,48 @@
 </head>
 <body>
     <h1>Welcome to the Python Page</h1>
+
+    <h1> Download Youtube Video</h1>
+    <h3>
+        from pytube import YouTube
+import tkinter as tk
+from tkinter import filedialog, messagebox
+
+def download_video():
+    url = url_entry.get()
+    try:
+        yt = YouTube(url)
+        
+        # Get the highest resolution stream
+        yd = yt.streams.get_highest_resolution()
+
+        # Ask the user to select the download directory
+        download_path = filedialog.askdirectory(title="Select Download Directory")
+        
+        if download_path:
+            yd.download(download_path)
+            messagebox.showinfo("Success", f"Download complete: {yt.title}")
+        else:
+            messagebox.showwarning("Cancelled", "Download directory selection cancelled.")
+    except Exception as e:
+        messagebox.showerror("Error", f"An error occurred: {str(e)}")
+
+# Set up the GUI
+root = tk.Tk()
+root.title("YouTube Video Downloader")
+
+# URL entry
+tk.Label(root, text="Enter YouTube URL:").pack(pady=5)
+url_entry = tk.Entry(root, width=50)
+url_entry.pack(pady=5)
+
+# Download button
+download_button = tk.Button(root, text="Download Video", command=download_video)
+download_button.pack(pady=20)
+
+# Run the GUI loop
+root.mainloop()
+
+    </h3>
 </body>
 </html>
